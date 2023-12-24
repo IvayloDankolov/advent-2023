@@ -7,7 +7,7 @@ mod solvers;
 
 #[derive(Parser)]
 struct Cli {
-    #[arg(short='d', long="day", default_value_t=String::from("1p1"))]
+    #[arg(short='d', long="day", default_value_t=String::from("2p1"))]
     day: String,
     input: Option<PathBuf>
 }
