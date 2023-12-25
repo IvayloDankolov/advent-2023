@@ -48,7 +48,7 @@ fn parse_game(str: &String) -> Game {
     
     let round_strs = line_info.get(2).unwrap().as_str().split(';');
     return Game {
-        id: id,
+        id,
         rounds: round_strs.map(parse_round).collect()
     }
 }

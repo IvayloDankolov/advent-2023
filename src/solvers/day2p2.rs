@@ -4,10 +4,6 @@ use lazy_static::lazy_static;
 
 use super::Solver;
 
-const NUM_REDS:i32   = 12;
-const NUM_GREENS:i32 = 13;
-const NUM_BLUES:i32  = 14;
-
 lazy_static! {
     static ref LINE_REGEX: Regex = Regex::new(r"Game (\d+):(.*)").unwrap();
     static ref ROUND_PART_REGEX: Regex = Regex::new(r" (\d+) (red|green|blue)").unwrap();
@@ -19,7 +15,7 @@ struct Round {
     greens: i32
 }
 struct Game {
-    id: i32,
+    _id: i32,
     rounds: Vec<Round>
 }
 
@@ -48,7 +44,7 @@ fn parse_game(str: &String) -> Game {
     
     let round_strs = line_info.get(2).unwrap().as_str().split(';');
     return Game {
-        id: id,
+        _id: id,
         rounds: round_strs.map(parse_round).collect()
     }
 }
