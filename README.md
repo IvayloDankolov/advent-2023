@@ -16,3 +16,13 @@ I then had to spend an embarassing amount of time debugging a subtle off by one 
 
 Then I wrote the solution to part 2 as a declarative one liner in about 90 seconds and it worked first time.
 If that's not a parable to not fall to the tempations of iterative programming and stick to functional purity, I don't know what is.
+
+### Day 6
+
+I briefly considered solving this as a quadratic inequality (as in windup * (time - windup) > record, solve for "windup")
+
+That lasted all of 5 seconds until I remembered how much I'd rather not deal with floating point errors.
+
+Afterwards I went for the "old faithful" binary search (technically, monotonic binary predicate satisfaction). All the while laughing at how much of an overkill it is for numbers you can easily do by hand.
+
+At which point I read part 2 and was laughing for entirely different reasons.
