@@ -7,6 +7,8 @@ mod day4p1; mod day4p2;
 mod day5p1; mod day5p2;
 mod day6p1; mod day6p2;
 mod day7p1; mod day7p2;
+mod day8p1; mod day8p2;
+
 struct Solver {
     solve: fn(input: BufReader<File>) -> ()
 }
@@ -20,6 +22,7 @@ pub fn solve_day(day: String, input: Option<PathBuf>) {
         (String::from("5p1"), day5p1::SOLVER), (String::from("5p2"), day5p2::SOLVER),
         (String::from("6p1"), day6p1::SOLVER), (String::from("6p2"), day6p2::SOLVER),
         (String::from("7p1"), day7p1::SOLVER), (String::from("7p2"), day7p2::SOLVER),
+        (String::from("8p1"), day8p1::SOLVER), (String::from("8p2"), day8p2::SOLVER),
     ]);
 
     let current_solver = solvers.get(&day).unwrap_or_else(|| panic!("Not a valid day to solve: {day}"));
@@ -32,5 +35,15 @@ pub fn solve_day(day: String, input: Option<PathBuf>) {
     let file = File::open(path.clone()).unwrap_or_else(|_| panic!("Cannot open input file: {}", path.display()));
     
     let reader = BufReader::new(file);
-    (current_solver.solve)(reader);
+
+    use std::time::Instant;
+    let now = Instant::now();
+
+    {
+        (current_solver.solve)(reader);
+    }
+
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
+    
 }
