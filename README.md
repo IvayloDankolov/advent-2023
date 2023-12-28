@@ -50,3 +50,9 @@ I suppose it's a quick way to generate a non-brute-forcable solution, so my mind
 
 Sometimes lucky, I suppose...
 
+### Day 9 
+
+Nice try, AoC, with the attempted misdirection you have to calculate all the differences and work backwards.
+
+You can totally apply the derivatives forwards as well, though, just have to mind the signs in part 2.
+
