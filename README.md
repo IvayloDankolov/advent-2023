@@ -67,3 +67,8 @@ Overall quite happy with what I got to try on this noe.
 
 By the way, anyone who's done geometric algorithms is probably well familiar with how to check if something is inside a given polygon via raycasting, but doing it in the context of a neighbour-list matrix is super damned fiddly.
 
+### Day 11
+
+I did it entirely the 'OOP' way. Or something. Not a huge enjoyer of 'make everything a member function' and that's unlikely to change in Rust.
+
+As for the task itself, I get that it was trying to misdirect people into actually 'expanding' the universe and generating a modified map. Unfortunately for the setters I couldn't be bothered with any of that nonsense, so the two parts differ by just the expansion constant in terms of code.
