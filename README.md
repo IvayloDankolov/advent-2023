@@ -56,3 +56,14 @@ Nice try, AoC, with the attempted misdirection you have to calculate all the dif
 
 You can totally apply the derivatives forwards as well, though, just have to mind the signs in part 2.
 
+### Day 10
+
+Now we're getting somewhere. Graph searches and geometry!
+
+I also used the opportunity to look up how to implement traits and methods in Rust, as well as bit fields.
+It's definitely very sensible overall (other than derive being annoyingly limited, though I suppose they were afraid a good-enough-most-of-the-time definition for something like Add/Sub that just distributes the oeprations might be too much of a footgun).
+
+Overall quite happy with what I got to try on this noe.
+
+By the way, anyone who's done geometric algorithms is probably well familiar with how to check if something is inside a given polygon via raycasting, but doing it in the context of a neighbour-list matrix is super damned fiddly.
+
