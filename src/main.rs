@@ -5,6 +5,7 @@ use clap::Parser;
 use solvers::solve_day;
 
 mod solvers;
+pub mod helpers;
 
 #[derive(Parser)]
 struct Cli {

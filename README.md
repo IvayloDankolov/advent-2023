@@ -82,3 +82,12 @@ I really stubbornly wanted to brute force this, restorting to running it in para
 Obviously the memoized solution takes about 1/10th of the effort to write (and is immesurably faster). But sometimes you just have this morbid fascination to just see how far you can push a language, you know...
 
 Also, apparently recursive closures aren't a thing. I get that borrowing stuff gets complicated, but if recursive methods are a thing (that by necessity borrow "self"), surely it's solvable. Anyway, as far as gripes go this is a rather incosequential one.
+
+
+### Day 13
+
+Pretty straightforward but the implicit assumptions that there's no ambiguity ever and that fixing the smudge in part 2 MUST be a relevant part of the reflection are doing some heavy lifting in this one. Could've probably been stated better.
+
+Regardless, I used it as an opportunity to actually look into the module system a bit and write a 2D coordinate helper.
+
+Coming from lots of other languages, Rust is definitely the odd one out with how things are addressed. Not entirely sold on the whole index file thing but we'll see as I get more familiar, I suppose.
