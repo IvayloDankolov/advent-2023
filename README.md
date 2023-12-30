@@ -72,3 +72,13 @@ By the way, anyone who's done geometric algorithms is probably well familiar wit
 I did it entirely the 'OOP' way. Or something. Not a huge enjoyer of 'make everything a member function' and that's unlikely to change in Rust.
 
 As for the task itself, I get that it was trying to misdirect people into actually 'expanding' the universe and generating a modified map. Unfortunately for the setters I couldn't be bothered with any of that nonsense, so the two parts differ by just the expansion constant in terms of code.
+
+### Day 12
+
+Now we're getting some proper (relatively lightweight) contest-style stuff.
+
+I really stubbornly wanted to brute force this, restorting to running it in parallel with a really dumb tight inner loop for the combination generator and I made it short-circuit based on a just as stupidly iterative prefix search. I left that in a separate text file to document my shame for the ages.
+
+Obviously the memoized solution takes about 1/10th of the effort to write (and is immesurably faster). But sometimes you just have this morbid fascination to just see how far you can push a language, you know...
+
+Also, apparently recursive closures aren't a thing. I get that borrowing stuff gets complicated, but if recursive methods are a thing (that by necessity borrow "self"), surely it's solvable. Anyway, as far as gripes go this is a rather incosequential one.

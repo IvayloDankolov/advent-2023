@@ -15,10 +15,7 @@ impl GalaxyMap {
     fn width(&self) -> usize {
         self.map[0].len()
     }
-    fn height(&self) -> usize {
-        self.map.len()
-    }
-
+    
     fn empty_rows(&self) -> HashSet<usize> {
         let mut empty_rows = HashSet::new();
         for (i, row) in self.map.iter().enumerate() {

@@ -11,6 +11,7 @@ mod  day8p1; mod  day8p2;
 mod  day9p1; mod  day9p2;
 mod day10p1; mod day10p2;
 mod day11p1; mod day11p2;
+mod day12p1; mod day12p2;
 
 struct Solver {
     solve: fn(input: BufReader<File>) -> ()
@@ -29,6 +30,7 @@ pub fn solve_day(day: String, input: Option<PathBuf>) {
         (String::from( "9p1"),  day9p1::SOLVER), (String::from( "9p2"),  day9p2::SOLVER),
         (String::from("10p1"), day10p1::SOLVER), (String::from("10p2"), day10p2::SOLVER),
         (String::from("11p1"), day11p1::SOLVER), (String::from("11p2"), day11p2::SOLVER),
+        (String::from("12p1"), day12p1::SOLVER), (String::from("12p2"), day12p2::SOLVER),
     ]);
 
     let current_solver = solvers.get(&day).unwrap_or_else(|| panic!("Not a valid day to solve: {day}"));
