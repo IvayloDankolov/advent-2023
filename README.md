@@ -112,3 +112,14 @@ Honestly one of the most directly straightforward ones so far. It literally spel
 Now, is using insertion ordered hash maps to do it in amortised linear time perhaps a bit of an overkill? Why yes, yes it is. But we're all about overkill here. Also gives me the chance to fool around with random Rust crates.
 
 I'm still very much in love with how tightly Rust optimises iterators. Having a system language that you can still do some functional programming in without sacrificing performance is very neat.
+
+### Day 16
+
+Yay, mirror puzzles. I finally promoted the directions bit flags from one of the earlier days to an actual library helper.
+
+Splitters allow for some fun infinite loop scenarios, but since we need to track what we lit anyway (tracking just the number wouldn't be enough in case beams cross),
+tracking it as a what direction we entered a cell from rather than just a yes/no flag is pretty trivial anyway, so ending early if we loop doesn't really add too much extra complexity.
+
+For part 2, I was wondering what they would do to throw a wrench into things and they sort of... didn't? One glance at the input size and you know you just know you're better off brute forcing it.
+
+In fairness I don't know that there really is a way to do this in less than cubic speed. You can use some sort of sub-path identification and then time reversal symmetry to avoid computing incoming directions that the beam already exited through on a previous iteration but that's a) way too complicated and b) won't actually make it sublinear.

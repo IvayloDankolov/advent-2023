@@ -1,6 +1,5 @@
 use std::{io::{BufRead, Error}, str::FromStr};
 
-use itertools::Itertools;
 use linked_hash_map::LinkedHashMap;
 
 use super::Solver;

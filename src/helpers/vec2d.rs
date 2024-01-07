@@ -72,6 +72,17 @@ impl<T> Vec2d<T> {
         })
     }
 
+    pub fn offset_position(&self, row: usize, col: usize, offset: (i64, i64)) -> Option<(usize, usize)> {
+        let (row_offset, col_offset) = offset;
+        let row = row as i64 + row_offset;
+        let col = col as i64 + col_offset;
+        if self.is_in_bounds(row, col) {
+            Some((row as usize, col as usize))
+        } else {
+            None
+        }
+    }
+
     pub fn is_in_bounds(&self, row: i64, col: i64) -> bool {
         row >= 0 && col >= 0 && row < self.height as i64 && col < self.width as i64
     }
