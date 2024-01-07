@@ -123,3 +123,15 @@ tracking it as a what direction we entered a cell from rather than just a yes/no
 For part 2, I was wondering what they would do to throw a wrench into things and they sort of... didn't? One glance at the input size and you know you just know you're better off brute forcing it.
 
 In fairness I don't know that there really is a way to do this in less than cubic speed. You can use some sort of sub-path identification and then time reversal symmetry to avoid computing incoming directions that the beam already exited through on a previous iteration but that's a) way too complicated and b) won't actually make it sublinear.
+
+
+### Day 17
+
+It wouldn't be a proper competition without pathfinding, now would it? I was beginning to wonder if we'd go there given how all the grid-based stuff so far was relatively lightweight.
+
+There are probably more efficient ways to do this -- for instance, pathfinding with a dynamic cost function, similar to how Google Maps computes public transport routes, only we set the distance to a huge number if we take more steps than we're allowed to, though that in itself can be a bit fiddly as it requires a modified data structure for the actual pathfinding algorithm --
+but this was my initial thought: what if we didn't look at it as pathfinding in a grid, but rather a graph that in addition to grid position encodes how many steps in each direction we're coming from. That way the constraint gets encoded in the graph itself. E.g. an edge exists between (4, 0, coming from (-1, 0)) and (5, 0, coming from (-2, 0)), but not (5, 0, coming from (-1, 0)). That does unfortunately make your graph explode to 12 times (4 * max_stride) the size, but hey, still technically a constant so we have the same time complexity.
+
+Ho boy was this a nightmare to debug, though. Off by one errors, accidental priority queue overriding, not computing graph vertices properly, you name it. I've deecided to leave in some commented out debugging code as a testament to the process.
+
+I will say, though, getting to part two I definitely didn't regret the graph transoformation approach, as the solution for it was basically just 30 seconds of changing the initial stride constants and rerunning.

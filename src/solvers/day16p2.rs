@@ -1,6 +1,6 @@
 use std::{io::{BufRead, BufReader}, fs::File};
 
-use crate::helpers::{vec2d::Vec2d, direction::{Directions, direction_vector}};
+use crate::helpers::{vec2d::Vec2d, direction::Directions, offset::Offset};
 
 use super::Solver;
 
@@ -83,7 +83,7 @@ fn track_beam<'a>(grid: &'a MirrorGrid, beam: (usize, usize, Directions)) -> imp
     light_directions(grid, beam)
         .iter()
         .filter_map(move |d| {
-            let (new_width, new_height) = grid.offset_position(row, col, direction_vector(d))?;
+            let (new_width, new_height) = grid.offset_position(row, col, Offset::from_direction(d))?;
             Some((new_width, new_height, d))
         })
 }

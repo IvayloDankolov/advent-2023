@@ -20,16 +20,6 @@ pub fn opposite_direction(direction: Directions) -> Directions {
     }
 }
 
-pub fn direction_vector(direction: Directions) -> (i64, i64) {
-    match direction {
-        Directions::N => (-1, 0),
-        Directions::E => (0, 1),
-        Directions::S => (1, 0),
-        Directions::W => (0, -1),
-        _ => panic!("Cannot calculate vector on a combined direction")
-    }
-}
-
 pub fn direction_vectors(directions: Directions) -> Vec<(i64, i64)> {
     let mut vectors = Vec::new();
 

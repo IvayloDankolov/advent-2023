@@ -1,3 +1,5 @@
+use super::offset::{Offset, self};
+
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Vec2d<T> {
@@ -41,12 +43,32 @@ impl<T> Vec2d<T> {
         self.data[row * self.width..(row+1) * self.width].iter_mut()
     }
 
+    pub fn iter_rows(&self) -> impl Iterator<Item=impl Iterator<Item=&T>> {
+        (0..self.height).map(move |row| self.iter_row(row))
+    }
+
     pub fn iter_col(&self, col: usize) -> impl Iterator<Item=&T> {
         (0..self.height).map(move |row| &self.data[row * self.width + col])
     }
     pub fn iter_col_mut(&mut self, col: usize) -> impl Iterator<Item=&mut T> {
         let w = self.width;
         self.iter_mut().skip(col-1).step_by(w)
+    }
+
+    pub fn iter_cols(&self) -> impl Iterator<Item=impl Iterator<Item=&T>> {
+        (0..self.width).map(move |col| self.iter_col(col))
+    }
+
+    pub fn iter_between(&self, start: (usize, usize), end: (usize, usize)) -> impl Iterator<Item=&T> {
+        let (start_row, start_col) = start;
+        let offset = offset::Offset::from_positions(start, end);
+        let (norm, steps) = offset.discrete_normalalized();
+
+        let positions = (0..steps+1).filter_map(
+            move |step| self.offset_position(start_row, start_col, norm * step)
+        );
+
+        positions.map(|(row, col)| self.get(row, col))
     }
 
     pub fn from_strings<It: Iterator<Item = String>>(strings: It, mapper: impl Fn(char) -> T) -> Option<Vec2d<T>> {
@@ -72,8 +94,8 @@ impl<T> Vec2d<T> {
         })
     }
 
-    pub fn offset_position(&self, row: usize, col: usize, offset: (i64, i64)) -> Option<(usize, usize)> {
-        let (row_offset, col_offset) = offset;
+    pub fn offset_position(&self, row: usize, col: usize, offset: Offset) -> Option<(usize, usize)> {
+        let (row_offset, col_offset) = (offset.rows, offset.cols);
         let row = row as i64 + row_offset;
         let col = col as i64 + col_offset;
         if self.is_in_bounds(row, col) {
