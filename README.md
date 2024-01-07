@@ -91,3 +91,16 @@ Pretty straightforward but the implicit assumptions that there's no ambiguity ev
 Regardless, I used it as an opportunity to actually look into the module system a bit and write a 2D coordinate helper.
 
 Coming from lots of other languages, Rust is definitely the odd one out with how things are addressed. Not entirely sold on the whole index file thing but we'll see as I get more familiar, I suppose.
+
+### Day 14
+
+Took a bit of a hiatus, only now getting some free time to sit down and work through it properly.
+
+In terms of Rust learnings, I guess I'm getting more comfortable with how traits get derived and implementing iterators.
+Not much beyond that, this one was mostly a re**hash** on grids, if you get my meaning.
+
+I 100% knew part 2 was going to be tilt this a million times. That was just the obvious direction. While I don't think there's any formula for this that would reduce the complexity of tilting beyond the obvious iterating backwards along the vector of the tilt - 
+admittedly I got a bit lazy there, you can memoize the next free spot as you're iterating to bring it down to O(n^2) from O(n^3),
+but it's not really relevant unless you're spending 20 hours brute forcing it - the key insight is the configurations can't really be infinite so this must get stuck on a loop at some point. Then you just do some modular arithmetic and jump straight to the final configuration.
+
+I waste sooo much unnecessary stack allocations cloning grids and only using them for a hashtable key, though. You can definitely implement this so much more efficiently, but I got way too lazy.

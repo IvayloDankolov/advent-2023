@@ -71,4 +71,18 @@ impl<T> Vec2d<T> {
             data
         })
     }
+
+    pub fn is_in_bounds(&self, row: i64, col: i64) -> bool {
+        row >= 0 && col >= 0 && row < self.height as i64 && col < self.width as i64
+    }
+    pub fn try_get(&self, row: i64, col: i64) -> Option<&T> {
+        if self.is_in_bounds(row, col) {
+            Some(self.get(row as usize, col as usize))
+        } else {
+            None
+        }
+    }
+    pub fn enumerate(&self) -> impl Iterator<Item=(usize, usize, &T)> {
+        self.data.iter().enumerate().map(move |(i, v)| (i / self.width, i % self.width, v))
+    }
 }
