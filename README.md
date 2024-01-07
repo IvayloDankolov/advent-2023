@@ -104,3 +104,11 @@ admittedly I got a bit lazy there, you can memoize the next free spot as you're 
 but it's not really relevant unless you're spending 20 hours brute forcing it - the key insight is the configurations can't really be infinite so this must get stuck on a loop at some point. Then you just do some modular arithmetic and jump straight to the final configuration.
 
 I waste sooo much unnecessary stack allocations cloning grids and only using them for a hashtable key, though. You can definitely implement this so much more efficiently, but I got way too lazy.
+
+### Day 15
+
+Honestly one of the most directly straightforward ones so far. It literally spells out what to do and you just follow it. Also one with perhaps the most dramatic differences between part 1 and 2: basically and entire second problem. I do like that it not-so-subtly teaches you about hashes and hash maps. 
+
+Now, is using insertion ordered hash maps to do it in amortised linear time perhaps a bit of an overkill? Why yes, yes it is. But we're all about overkill here. Also gives me the chance to fool around with random Rust crates.
+
+I'm still very much in love with how tightly Rust optimises iterators. Having a system language that you can still do some functional programming in without sacrificing performance is very neat.
